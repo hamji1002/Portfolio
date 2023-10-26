@@ -1,107 +1,121 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 body, html {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
     margin: 0;
-    background: linear-gradient(to right, #ffffff, #e0e0e0);
+    padding: 0;
+    height: 100%;
     font-family: 'Roboto', sans-serif;
+    background: black;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+}
+
+.header-content h1 {
+    margin: 0;
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 2px;
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #555;
+    font-size: 18px;
+    letter-spacing: 1px;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.navbar a::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: #555;
+    visibility: hidden;
+    transition: all 0.3s;
+}
+
+.navbar a:hover {
+    color: #000;
+}
+
+.navbar a:hover::before {
+    visibility: visible;
+    width: 100%;
 }
 
 .container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 50px; 
-    perspective: 1000px; /* Perspective for 3D hover effect */
+    margin: 50px;
+    gap: 40px;
 }
 
 .content-item {
-    width: 45%;
+    flex-basis: calc(25% - 10px);
     position: relative;
     overflow: hidden;
-    margin-bottom: 20px;
-    transform-style: preserve-3d; /* Enable 3D transforms */
-    transform: perspective(1px) translateY(0); /* Initial state of element */
+    cursor: pointer;
 }
 
 .responsive-image {
     width: 100%;
+    display: block;
+    transition: transform 0.4s;
+}
+
+.content-item:hover .responsive-image {
+    transform: scale(1.1);
 }
 
 .hover-card {
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    transform: rotateX(90deg); /* Initial state of hover card */
-    transition: transform 0.5s ease; /* Animation settings */
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    opacity: 0.9;
-    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.4s;
+    font-size: 20px;
 }
 
 .content-item:hover .hover-card {
-    transform: rotateX(0deg); /* Final state of hover card */
-}
-
-.header-container {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-}
-
-h1 {
-    font-family: 'Raleway', sans-serif;
-    font-size: 50px;
+    opacity: 1;
 }
 
 .footer {
-    flex-shrink: 0; 
-    font-family: 'Roboto', sans-serif;
-    font-weight: 100;
+    padding: 40px;
     text-align: center;
-    margin-top: 20px;
+    font-size: 16px;
 }
 
-.navbar {
-    background-color: white;
-    overflow: auto;
+.footer a {
+    color: #555;
+    text-decoration: underline;
 }
 
-.navbar a {
-    color: black;
-    display: block;
-    padding: 14px 16px;
-    text-align: center;
-    text-decoration: none;
-}
-
-.navbar a:hover {
-    background-color: #ddd;
-    color: black;
-}
-
-.navbar li {
-    float: right;
-}
-
-.navbar ul {
-    display: flex;
-    font-family: 'roboto', sans-serif;
-    font-size: 20px;
-    font-weight: 100;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+.footer a:hover {
+    color: #000;
 }
