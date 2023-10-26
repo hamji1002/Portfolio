@@ -1,0 +1,45 @@
+body {
+    background-color: black;
+    color: white; /* This changes the text color so it is readable against the black background */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100vh; /* This will make the container take up the full height of the viewport */
+}
+
+.left-text {
+    text-align: left;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 1rem; /* To provide some spacing between the h1 and the navigation links */
+    padding-left: 40px; /* adjust this value as needed */
+
+}
+
+.nav-links {
+    font-family: 'Roboto', sans-serif;
+
+    display: flex;
+    gap: 1rem; /* To provide some spacing between the links */
+    list-style: none; /* To remove the bullet points */
+}
+
+.nav-links a {
+    color: white; /* To ensure the links are readable against the black background */
+    text-decoration: none; /* To remove the underline */
+}
+
+#hidden-text {
+    background-color: white;
+    color: white; /* makes the text the same color as the background, effectively hiding it */
+}
+
+#hidden-text:hover {
+    background-color: transparent; /* removes the background color when the mouse hovers over the text */
+    color: black; /* changes the text color to black when the mouse hovers over the text */
+}

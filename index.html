@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.3/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+    <title>Jihoon Ham Portfolio</title>
+    <style>
+        .hidden-text {
+            background-color: white;
+            color: white; /* makes the text the same color as the background, effectively hiding it */
+        }
+
+        .hidden-text:hover {
+            background-color: transparent; /* removes the background color when the mouse hovers over the text */
+            color: black; /* changes the text color to black when the mouse hovers over the text */
+        }
+    </style>
+</head>
+
+<body class="bg-black text-white">
+    <main>
+        <section id="path" class="container h-screen flex flex-col items-start justify-center">
+            <h1 class="left-text text-left text-2xl font-normal mb-4 pl-10">Jihoon Ham <span class="hidden-text">is an artist, based in Seoul,</span> attempting to shift the paradigm</h1>
+            <nav>
+                <ul class="nav-links flex space-x-4 list-none">
+                    <li><a href="/pages/01_photography.html" class="text-white no-underline">Photography</a></li>
+                    <li><a href="/pages/01_generativeart.html" class="text-white no-underline">Generative Art</a></li>
+                    <li><a href="#" class="text-white no-underline">Information</a></li>
+                </ul>
+            </nav>
+        </section>
+    </main>
+    <footer>
+        <p class="text-center">&copy; 2023 Jihoon Ham</p>
+    </footer>
+</body>
+</html>
