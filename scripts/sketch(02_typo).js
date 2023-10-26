@@ -3,15 +3,13 @@ let pg;
 
 let tX,tY,sp,dspx,dspy,fct;
 
-
 function setup() {
-
-  createCanvas(1080, 1080);
+  let canvas = createCanvas(1080, 1080);
+  canvas.parent('sketch-container'); 
   createSliders();
   pg = createGraphics(1080, 1080);
-
-
 }
+
 
 function draw() {
   background(0);

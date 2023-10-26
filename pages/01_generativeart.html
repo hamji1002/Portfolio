@@ -7,6 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/01_generativeart.css">
     <script src="/scripts/parallax.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.sound.min.js"></script>
 </head>
 
 <body>
@@ -27,49 +30,151 @@
 
     <main class="container">
         <div class="content-item">
-            <img src="/images/typogenerative.jpg" alt="A description of the image" class="responsive-image">
-            <div class="hover-card">
-                <h3>Manipulate</h3>
-                <p>Learn more about typogenerative art</p>
-                <a href="/pages/02_typo.html">See More</a>
-            </div>
+            <h3>Manipulate</h3>
+            <p>Learn more about typogenerative art</p>
+            <a class="hover-link" href="/pages/02_typo.html">See More</a>
         </div>
 
         <div class="content-item">
-            <img src="/images/colorinteraction.jpg" alt="A description of the image" class="responsive-image">
-            <div class="hover-card">
-                <h3>Color Interaction</h3>
-                <p>Understand the interaction of colors</p>
-                <a href="/pages/02_colorinteraction.html">See More</a>
-            </div>
+            <h3>Color Interaction</h3>
+            <p>Understand the interaction of colors</p>
+            <a class="hover-link" href="/pages/02_colorinteraction.html">See More</a>
         </div>
 
         <div class="content-item">
-            <img src="/images/network.jpg" alt="A description of the image" class="responsive-image">
-            <div class="hover-card">
-                <h3>Network</h3>
-                <p>Discover the complex network of art</p>
-                <a href="/pages/02_network.html">See More</a>
-            </div>
-        </div> 
-        
-        <div class="content-item">
-            <img src="/images/death.jpg" alt="A description of the image" class="responsive-image">
-            <div class="hover-card">
-                <h3>Death</h3>
-                <p>Discover utmost simple nature of life</p>
-                <a href="/pages/02_deathtypography.html">See More</a>
-            </div>
+            <h3>Network</h3>
+            <p>Discover the complex network of art</p>
+            <a class="hover-link" href="/pages/02_network.html">See More</a>
         </div>
 
         <div class="content-item">
-            <img src="/images/RandomMovement.jpg" alt="A description of the image" class="responsive-image">
-            <div class="hover-card">
-                <h3>Random Movement</h3>
-                <p href="/pages/02_Randomlinet.html">See More</p>
-            </div>
+            <h3>Death</h3>
+            <p>Discover utmost simple nature of life</p>
+            <a class="hover-link" href="/pages/02_deathtypography.html">See More</a>
+        </div>
+
+        <div class="content-item">
+            <h3>Random Movement</h3>
+            <p>Experience the unpredictability of random lines</p>
+            <a class="hover-link" href="/pages/02_Randomlinet.html">See More</a>
         </div>
     </main>
+
+    <div id="sketch-container"></div>
+<script>
+let font;
+let pg;
+
+let tX,tY,sp,dspx,dspy,fct;
+
+function setup() {
+  let canvas = createCanvas(1080, 1080);
+  canvas.parent('sketch-container'); 
+  createSliders();
+  pg = createGraphics(1080, 1080);
+}
+
+
+function draw() {
+  background(0);
+
+
+  // PGraphics
+
+  pg.background(0);
+  pg.fill(255);
+  // pg.textFont(font);
+  pg.textSize(400);
+  pg.push();
+  pg.translate(width/2, height/2);
+  pg.textAlign(CENTER, CENTER);
+  pg.text("RAG", 0, 0);
+  pg.pop();
+
+
+  let tilesX = tX.value();
+  let tilesY = tY.value();
+
+  let tileW = int(width/tilesX);
+  let tileH = int(height/tilesY);
+
+  for (let y = 0; y < tilesY; y++) {
+    for (let x = 0; x < tilesX; x++) {
+
+      // WARP
+      let waveX = int(sin(frameCount * sp.value() + ( x * y ) * dspx.value()) * fct.value());
+      let waveY = int(sin(frameCount * sp.value() + ( x * y ) * dspy.value()) * fct.value());
+
+      if (dspx.value() === 0){
+          waveX = 0;
+      }
+
+      if (dspy.value() === 0){
+          waveY = 0;
+      }
+      
+      // image(pg,0,0)
+      
+      // SOURCE
+      let sx = x*tileW + waveX;
+      let sy = y*tileH + waveY;
+      let sw = tileW;
+      let sh = tileH;
+
+
+      // DESTINATION
+      let dx = x*tileW;
+      let dy = y*tileH;
+      let dw = tileW;
+      let dh = tileH;
+
+
+
+      copy(pg, sx, sy, sw, sh, dx, dy, dw, dh);
+
+    }
+  }
+}
+
+function createSliders(){
+  tX = createSlider(1, 80, 16, 1);
+  tX.position(150, 250); 
+  createP('Tiles X').position(150, 210);
+  document.getElementsByTagName("p")[0].style.color = "white";
+  
+  
+  tY = createSlider(1, 80, 16, 1);
+  tY.position(150, 350);
+  createP('Tiles Y').position(150, 310);
+  document.getElementsByTagName("p")[1].style.color = "white";
+
+
+  sp = createSlider(0, 1, 0.005, 0.01);
+  sp.position(150, 450);
+  createP('Speed').position(150, 410);
+  document.getElementsByTagName("p")[2].style.color = "white";
+
+  dspx = createSlider(0, 0.1, 0.05, 0.001);
+  dspx.position(1500, 500);
+  createP('Displacement X').position(1500, 460);
+  //color of the text = white 
+  document.getElementsByTagName("p")[3].style.color = "white";
+
+
+  dspy = createSlider(0, 0.2, 0, 0.01);
+  dspy.position(1500, 600);
+  createP('Displacement Y').position(1500, 560);
+  document.getElementsByTagName("p")[4].style.color = "white";
+
+
+  fct = createSlider(0, 300, 100, 1);
+  fct.position(1500, 700);
+  createP('Offset').position(1500, 660);
+  document.getElementsByTagName("p")[5].style.color = "white";
+  fct.style('background', 'white');
+  fct.style('color', 'white');
+}
+</script>
 
     <footer>
         <p>© 2023 Jihoon Ham</p>
