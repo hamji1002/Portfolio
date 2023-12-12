@@ -1,44 +1,76 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.3/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
     <title>Photography</title>
-</head>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
 
-<body class="flex flex-col h-full m-0">
-    <header class="flex justify-between p-4">
-        <h1 class="text-5xl font-extrabold" style="font-family: 'Raleway', sans-serif;">HAMJIHOON</h1>
-        <nav class="navbar bg-white overflow-auto">
-            <ul class="flex list-none m-0 p-0 font-light" style="font-family: 'Roboto', sans-serif; font-size: 20px;">
-                <li class="float-right"><a href="#content04" class="block p-4 text-center text-black no-underline hover:bg-gray-200">Contact</a></li>
-                <li class="float-right"><a href="#content03" class="block p-4 text-center text-black no-underline hover:bg-gray-200">Feed</a></li>
-                <li class="float-right"><a href="02_blog.html" class="block p-4 text-center text-black no-underline hover:bg-gray-200">Blog</a></li>
-                <li class="float-right"><a href="/index.html" class="block p-4 text-center text-black no-underline hover:bg-gray-200">Home</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main class="flex-auto relative">
-        <div id="content01" class="content flex justify-center items-center m-24 w-full">
-            <div class="image-text-container flex justify-between w-full">
-                <img src="/images/Main_Page.jpg" alt="A description of the image" class="h-auto max-w-1/2">
-                <div class="text-section p-0 pl-4">
-                    <a href="/new_page.html" class="text-black no-underline">
-                        <h2 class="image-title text-2xl font-light" style="font-family: 'Roboto', sans-serif;">Beavertail, Newport, US</h2>
-                    </a>
-                    <p class="image-text font-thin" style="font-family: 'Roboto', sans-serif;">This is the text that will appear beside the image.</p>
-                </div>
-            </div>
+        .navbar a:hover {
+            color: #6B7280; /* Slightly darker grey for hover */
+            transform: translateY(-2px); /* Subtle movement on hover */
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .image-gallery {
+            column-count: 3;
+            column-gap: 1rem;
+        }
+
+        .image-gallery img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            break-inside: avoid-column;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .image-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        @media screen and (max-width: 768px) {
+            .image-gallery {
+                column-count: 2;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <header class="p-6">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-4xl font-bold">HAMJIHOON</h1>
+            <nav class="navbar">
+                <ul class="flex space-x-4">
+                    <li><a href="/index.html" class="text-base text-gray-700 hover:text-gray-800">Home</a></li>
+                    <li><a href="02_blog.html" class="text-base text-gray-700 hover:text-gray-800">Blog</a></li>
+                    <li><a href="#content03" class="text-base text-gray-700 hover:text-gray-800">Feed</a></li>
+                    <li><a href="#content04" class="text-base text-gray-700 hover:text-gray-800">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-        <!-- Repeat content for other sections -->
+    </header>
+
+    <main class="container mx-auto p-6">
+        <div class="image-gallery">
+            <img class="h-auto max-w-full" src="/images/Main_Page.jpg" alt="Main Page">
+            <img class="h-auto max-w-full" src="/images/ph_01.jpg" alt="Main Page">
+            <img class="h-auto max-w-full" src="/images/ph_02.jpg" alt="Main Page">
+            <img class="h-auto max-w-full" src="/images/ph_03.jpg" alt="Main Page">
+            <img class="h-auto max-w-full" src="/images/ph_04.jpg" alt="Main Page">
+            <img class="h-auto max-w-full" src="/images/ph_05.jpg" alt="Main Page">
+            <img class="h-auto max-w-full" src="/images/ph_06.jpg" alt="Main Page">
+ 
+        </div>
     </main>
-    <footer>
-        <p class="text-center font-thin" style="font-family: 'Roboto', sans-serif;">© 2023 Jihoon Ham</p>
+
+    <footer class="py-6 text-center">
+        <p class="text-sm text-gray-600">© 2023 Jihoon Ham</p>
     </footer>
 </body>
-
 </html>

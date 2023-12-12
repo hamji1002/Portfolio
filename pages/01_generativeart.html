@@ -29,35 +29,46 @@
     </header>
 
     <main class="container">
-        <div class="content-item">
-            <h3>Manipulate</h3>
-            <p>Learn more about typogenerative art</p>
-            <a class="hover-link" href="/pages/02_typo.html">See More</a>
+        <div class="left-section">
+            <div class="content-item">
+                <h3>Manipulate</h3>
+                <p>Learn more about typogenerative art</p>
+                <a class="hover-link" href="/pages/02_typo.html">See More</a>
+            </div>
+
+        <div class="left-section">
+            <div class="content-item">
+                <h3>Color Interaction</h3>
+                <p>Understand the interaction of colors</p>
+                <a class="hover-link" href="/pages/02_colorinteraction.html">See More</a>
+            </div>
+
+        <div class="left-section">
+            <div class="content-item">
+                <h3>Network</h3>
+                <p>Discover the complex network of art</p>
+                <a class="hover-link" href="/pages/02_network.html">See More</a>
+            </div>
+
+        <div class="left-section">
+            <div class="content-item">
+                <h3>Death</h3>
+                <p>Discover utmost simple nature of life</p>
+                <a class="hover-link" href="/pages/02_deathtypography.html">See More</a>
+            </div>
+
+        <div class="left-section">
+            <div class="content-item">
+                <h3>Random Movement</h3>
+                <p>Experience the unpredictability of random lines</p>
+                <a class="hover-link" href="/pages/02_Randomlinet.html">See More</a>
+            </div>
+        </div>
+    
+        <div class="right-section">
+            <div id="sketch-container"></div>
         </div>
 
-        <div class="content-item">
-            <h3>Color Interaction</h3>
-            <p>Understand the interaction of colors</p>
-            <a class="hover-link" href="/pages/02_colorinteraction.html">See More</a>
-        </div>
-
-        <div class="content-item">
-            <h3>Network</h3>
-            <p>Discover the complex network of art</p>
-            <a class="hover-link" href="/pages/02_network.html">See More</a>
-        </div>
-
-        <div class="content-item">
-            <h3>Death</h3>
-            <p>Discover utmost simple nature of life</p>
-            <a class="hover-link" href="/pages/02_deathtypography.html">See More</a>
-        </div>
-
-        <div class="content-item">
-            <h3>Random Movement</h3>
-            <p>Experience the unpredictability of random lines</p>
-            <a class="hover-link" href="/pages/02_Randomlinet.html">See More</a>
-        </div>
     </main>
 
     <div id="sketch-container"></div>
@@ -74,23 +85,18 @@ function setup() {
   pg = createGraphics(1080, 1080);
 }
 
-
 function draw() {
   background(0);
 
-
   // PGraphics
-
   pg.background(0);
   pg.fill(255);
-  // pg.textFont(font);
   pg.textSize(400);
   pg.push();
   pg.translate(width/2, height/2);
   pg.textAlign(CENTER, CENTER);
   pg.text("RAG", 0, 0);
   pg.pop();
-
 
   let tilesX = tX.value();
   let tilesY = tY.value();
@@ -121,17 +127,13 @@ function draw() {
       let sw = tileW;
       let sh = tileH;
 
-
       // DESTINATION
       let dx = x*tileW;
       let dy = y*tileH;
       let dw = tileW;
       let dh = tileH;
 
-
-
       copy(pg, sx, sy, sw, sh, dx, dy, dw, dh);
-
     }
   }
 }
@@ -142,12 +144,10 @@ function createSliders(){
   createP('Tiles X').position(150, 210);
   document.getElementsByTagName("p")[0].style.color = "white";
   
-  
   tY = createSlider(1, 80, 16, 1);
   tY.position(150, 350);
   createP('Tiles Y').position(150, 310);
   document.getElementsByTagName("p")[1].style.color = "white";
-
 
   sp = createSlider(0, 1, 0.005, 0.01);
   sp.position(150, 450);
@@ -157,15 +157,12 @@ function createSliders(){
   dspx = createSlider(0, 0.1, 0.05, 0.001);
   dspx.position(1500, 500);
   createP('Displacement X').position(1500, 460);
-  //color of the text = white 
   document.getElementsByTagName("p")[3].style.color = "white";
-
 
   dspy = createSlider(0, 0.2, 0, 0.01);
   dspy.position(1500, 600);
   createP('Displacement Y').position(1500, 560);
   document.getElementsByTagName("p")[4].style.color = "white";
-
 
   fct = createSlider(0, 300, 100, 1);
   fct.position(1500, 700);
@@ -181,3 +178,138 @@ function createSliders(){
     </footer>
 </body>
 </html>
+
+<style>
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+.header-container {
+    background-color: black;
+    padding: 2rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content h1 {
+    color: white;
+    margin: 0;
+}
+
+.navbar {
+    margin-top: 1rem;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+}
+
+.navbar li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border: 1px solid transparent;
+    transition: border-color 0.3s;
+}
+
+.navbar li a:hover {
+    border-color: white;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 3rem auto;
+    gap: 2rem;
+}
+.left-section {
+    flex: 1;
+}
+
+.right-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content-item {
+    background-color: #222;
+    color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.content-item:hover {
+    transform: translateY(-1rem);
+}
+
+.hover-link {
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 1rem;
+    border: 1px solid white;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s;
+}
+
+.hover-link:hover {
+    background-color: white;
+    color: black;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+#sketch-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem auto;
+    width: 100%; /* Added this to take full width of right-section */
+}
+
+/* Sliders Styling */
+#slider-container {
+    position: relative;
+    z-index: 10;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 2rem auto;
+}
+
+.slider-group {
+    margin-bottom: 20px;
+}
+
+p5Canvas {
+    max-width: 100%;
+    height: auto;
+}
+</style>

@@ -10,11 +10,12 @@
         .hidden-text {
             background-color: white;
             color: white; /* makes the text the same color as the background, effectively hiding it */
+            transition: background-color 0.3s, color 0.3s; /* smooth transition for background and text color */
         }
 
         .hidden-text:hover {
             background-color: transparent; /* removes the background color when the mouse hovers over the text */
-            color: black; /* changes the text color to black when the mouse hovers over the text */
+            color: white; /* changes the text color to black when the mouse hovers over the text */
         }
     </style>
 </head>
@@ -22,9 +23,9 @@
 <body class="bg-black text-white">
     <main>
         <section id="path" class="container h-screen flex flex-col items-start justify-center">
-            <h1 class="left-text text-left text-2xl font-normal mb-4 pl-10">Jihoon Ham <span class="hidden-text">is an artist, based in Seoul,</span> attempting to shift the paradigm</h1>
+            <h1 class="text-left text-2xl font-normal mb-4 pl-10">Jihoon Ham <span class="hidden-text">is a graphic designer based in Seoul</span></h1>
             <nav>
-                <ul class="nav-links flex space-x-4 list-none">
+                <ul class="nav-links flex space-x-4 list-none pl-10">
                     <li><a href="/pages/01_photography.html" class="text-white no-underline">Photography</a></li>
                     <li><a href="/pages/01_generativeart.html" class="text-white no-underline">Generative Art</a></li>
                     <li><a href="#" class="text-white no-underline">Information</a></li>
